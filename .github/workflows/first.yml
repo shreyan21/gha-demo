@@ -1,15 +1,29 @@
 name: My First Workflow
 
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            - main
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print message
-        run: 
-            echo "What are you doing these days"
-            echo "GitHub Actions is working!"
+    build:
+        runs-on: 
+            ubuntu-latest
+
+        defaults:
+          run:
+            working-directory: server
+        steps:
+           - name: Download repo
+             uses: actions/checkout@v3
+
+           - name: Install node
+             uses: actions/setup-node@v3
+             with: 
+                node-version: 18
+            
+           - name: Install dependencies
+             run: npm install
+
+           - name: Execute app
+             run: nodemon index.js
