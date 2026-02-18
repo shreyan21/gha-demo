@@ -24,14 +24,12 @@ jobs:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
           
-        - name: Creating docker image
-          run: docker build -t dockerized  .
-          working-directory: server
-        
         - name: Build and push image
           uses: docker/build-push-action@v5
           with:
-            push: true
-            tags: sreyansh1/express-app:latest
+           context: ./server
+           file: ./server/Dockerfile
+           push: true
+           tags: sreyansh1/express-app:latest
         
         
