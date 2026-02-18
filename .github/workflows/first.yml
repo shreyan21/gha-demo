@@ -7,23 +7,8 @@ on:
 
 jobs:
     build:
-        runs-on: 
-            ubuntu-latest
-
-        defaults:
-          run:
-            working-directory: server
-        steps:
-           - name: Download repo
-             uses: actions/checkout@v3
-
-           - name: Install node
-             uses: actions/setup-node@v3
-             with: 
-                node-version: 18
-            
-           - name: Install dependencies
-             run: npm install
-
-           - name: Execute app
-             run:  echo "App executed successfully"
+       runs-on: ubuntu-latest
+       steps:
+        - name: Resetting everything
+          run: git reset --hard HEAD~3
+        
