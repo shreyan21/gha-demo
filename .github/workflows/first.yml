@@ -25,7 +25,8 @@ jobs:
             password: ${{ secrets.DOCKER_PASSWORD }}
           
         - name: Creating docker image
-          run: docker build -t dockerized  ./server
+          run: docker build -t dockerized  .
+          working-directory: server
         
         - name: Build and push image
           uses: docker/build-push-action@v5
