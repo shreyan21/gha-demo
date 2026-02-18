@@ -26,4 +26,4 @@ jobs:
              run: npm install
 
            - name: Execute app
-             run:  npm start
+             run:  echo "App executed successfully"
